@@ -1,0 +1,43 @@
+.todo-item {
+  $this: &;
+
+  display: flex;
+  align-items: center;
+  padding: 5px 20px;
+  transition: background-color 0.3s;
+  word-break: break-all;
+
+  &:hover {
+    background-color: rgba(#eee, 0.5);
+  }
+
+  input {
+    margin-right: 20px;
+  }
+
+  &__label {
+    display: block;
+    cursor: pointer;
+    flex: 1;
+    padding-right: 15px;
+  }
+
+  &__remove {
+    flex: 0;
+    background: none;
+    border: 0;
+    margin-left: auto;
+    padding: 5px 10px;
+    transition: 0.3s;
+
+    &:hover {
+      background-color: rgba(#000, 0.1);
+    }
+  }
+
+  &--completed {
+    #{$this}__text {
+      text-decoration: line-through;
+    }
+  }
+}

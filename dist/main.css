@@ -1,0 +1,78 @@
+@font-face {
+  font-family: "Roboto";
+  src: local("Roboto"), local("Roboto-Regular"), url(fonts/Roboto-Regular.woff2) format("woff2"), url(fonts/Roboto-Regular.woff) format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap; }
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; }
+
+.TodoItem__todo-item--3XQt2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 5px 20px;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+  word-break: break-all; }
+  .TodoItem__todo-item--3XQt2:hover {
+    background-color: rgba(238, 238, 238, 0.5); }
+  .TodoItem__todo-item--3XQt2 input {
+    margin-right: 20px; }
+  .TodoItem__todo-item__label---ZkhS {
+    display: block;
+    cursor: pointer;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    padding-right: 15px; }
+  .TodoItem__todo-item__remove--ut_V7 {
+    -webkit-box-flex: 0;
+        -ms-flex: 0;
+            flex: 0;
+    background: none;
+    border: 0;
+    margin-left: auto;
+    padding: 5px 10px;
+    -webkit-transition: 0.3s;
+    transition: 0.3s; }
+    .TodoItem__todo-item__remove--ut_V7:hover {
+      background-color: rgba(0, 0, 0, 0.1); }
+  .TodoItem__todo-item--completed--2TlF4 .TodoItem__todo-item__text--1ypE6 {
+    text-decoration: line-through; }
+
+.TodoList__todo-list--36FPP {
+  max-width: 900px;
+  padding: 20px 0;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  font-size: 18px;
+  font-weight: 600; }
+  .TodoList__todo-list__empty--1lvlW {
+    text-align: center;
+    margin: 0; }
+
+.TodoInput__todo-input--3LBK3 {
+  max-width: 900px;
+  margin: 0 auto 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
+  .TodoInput__todo-input__input--1xHB- {
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    padding: 5px; }
+  .TodoInput__todo-input__submit--Ztnld {
+    padding: 5px 10px;
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 100px;
+            flex: 0 0 100px; }
+
+
+/*# sourceMappingURL=main.css.map*/

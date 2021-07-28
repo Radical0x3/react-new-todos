@@ -1,0 +1,14 @@
+.todo-list {
+  max-width: 900px;
+  padding: 20px 0;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+
+  font-size: 18px;
+  font-weight: 600;
+
+  &__empty {
+    text-align: center;
+    margin: 0;
+  }
+}

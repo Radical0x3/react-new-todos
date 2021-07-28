@@ -11,8 +11,8 @@ class TodoList extends Component {
         {this.props.todos.map((item) => {
           return (
             <TodoItem item={item.text} isCompleted={item.isCompleted} key={item.id}
-                      onTodoItemChange={() => this.props.handleTodoItemChange(item.id)}
-                      onTodoItemRemove={() => this.props.onTodoItemRemove(item.id)}
+                      onItemChange={() => this.props.onTodoItemChange(item.id)}
+                      onItemRemove={() => this.props.onTodoItemRemove(item.id)}
             />
           )
         })}
@@ -27,7 +27,7 @@ TodoList.propTypes = {
     text: PropTypes.string.isRequired,
     isCompleted: PropTypes.bool.isRequired
   })).isRequired,
-  handleTodoItemChange: PropTypes.func.isRequired,
+  onTodoItemChange: PropTypes.func.isRequired,
   onTodoItemRemove: PropTypes.func.isRequired
 };
 

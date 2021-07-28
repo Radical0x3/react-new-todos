@@ -48,13 +48,12 @@ class App extends Component {
       <>
         <TodoInput onTodoInputSubmit={this.handleTodoInput}/>
         <TodoList todos={this.state.todos}
-                  handleTodoItemChange={this.handleTodoItemChange}
+                  onTodoItemChange={this.handleTodoItemChange}
                   onTodoItemRemove={this.handleRemove}
         />
       </>
     );
   }
 }
-
 
 export default App;

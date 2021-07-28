@@ -12,11 +12,11 @@ class TodoItem extends Component {
   }
 
   handleClick() {
-    this.props.onTodoItemChange();
+    this.props.onItemChange();
   }
 
   handleRemove() {
-    this.props.onTodoItemRemove();
+    this.props.onItemRemove();
   }
 
   render() {
@@ -35,8 +35,8 @@ class TodoItem extends Component {
 TodoItem.propTypes = {
   item: PropTypes.string.isRequired,
   isCompleted: PropTypes.bool.isRequired,
-  onTodoItemAdd: PropTypes.func,
-  onTodoItemRemove: PropTypes.func.isRequired
+  onItemChange: PropTypes.func.isRequired,
+  onItemRemove: PropTypes.func.isRequired
 };
 
 export default TodoItem;

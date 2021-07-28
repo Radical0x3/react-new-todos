@@ -10,7 +10,7 @@ class TodoList extends Component {
         {this.props.todos.length < 1 && <h3 className={styles["todo-list__empty"]}>No todos</h3>}
         {this.props.todos.map((item) => {
           return (
-            <TodoItem item={item.text} isCompleted={item.isCompleted} key={item.id}
+            <TodoItem title={item.title} completed={item.completed} key={item.id}
                       onItemChange={() => this.props.onTodoItemChange(item.id)}
                       onItemRemove={() => this.props.onTodoItemRemove(item.id)}
             />
@@ -24,8 +24,8 @@ class TodoList extends Component {
 TodoList.propTypes = {
   todos: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
-    text: PropTypes.string.isRequired,
-    isCompleted: PropTypes.bool.isRequired
+    title: PropTypes.string.isRequired,
+    completed: PropTypes.bool.isRequired
   })).isRequired,
   onTodoItemChange: PropTypes.func.isRequired,
   onTodoItemRemove: PropTypes.func.isRequired

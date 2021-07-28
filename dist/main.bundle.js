@@ -13,10 +13,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _App_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./App.scss */ "./src/components/app/App.scss");
-/* harmony import */ var _sprites_cancel_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../sprites/cancel.svg */ "./src/sprites/cancel.svg");
-/* harmony import */ var _todo_list_TodoList_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../todo-list/TodoList.jsx */ "./src/components/todo-list/TodoList.jsx");
-/* harmony import */ var _todo_input_TodoInput_jsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../todo-input/TodoInput.jsx */ "./src/components/todo-input/TodoInput.jsx");
+/* harmony import */ var regenerator_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! regenerator-runtime */ "./node_modules/regenerator-runtime/runtime.js");
+/* harmony import */ var regenerator_runtime__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(regenerator_runtime__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _App_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./App.scss */ "./src/components/app/App.scss");
+/* harmony import */ var _sprites_cancel_svg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../sprites/cancel.svg */ "./src/sprites/cancel.svg");
+/* harmony import */ var _todo_list_TodoList_jsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../todo-list/TodoList.jsx */ "./src/components/todo-list/TodoList.jsx");
+/* harmony import */ var _todo_input_TodoInput_jsx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../todo-input/TodoInput.jsx */ "./src/components/todo-input/TodoInput.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
@@ -36,6 +38,10 @@ function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (O
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -63,6 +69,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var App = /*#__PURE__*/function (_Component) {
   _inherits(App, _Component);
 
@@ -75,19 +82,7 @@ var App = /*#__PURE__*/function (_Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      todos: [{
-        id: 1,
-        text: "Lorem ipsum #1",
-        isCompleted: false
-      }, {
-        id: 2,
-        text: "Lorem ipsum #2",
-        isCompleted: false
-      }, {
-        id: 3,
-        text: "Lorem ipsum #3",
-        isCompleted: true
-      }]
+      todos: []
     };
     _this.handleTodoItemChange = _this.handleTodoItemChange.bind(_assertThisInitialized(_this));
     _this.handleTodoInput = _this.handleTodoInput.bind(_assertThisInitialized(_this));
@@ -96,13 +91,50 @@ var App = /*#__PURE__*/function (_Component) {
   }
 
   _createClass(App, [{
+    key: "componentDidMount",
+    value: function () {
+      var _componentDidMount = _asyncToGenerator( /*#__PURE__*/regenerator_runtime__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee() {
+        var response, todos;
+        return regenerator_runtime__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return fetch('https://jsonplaceholder.typicode.com/todos?_limit=10');
+
+              case 2:
+                response = _context.sent;
+                _context.next = 5;
+                return response.json();
+
+              case 5:
+                todos = _context.sent;
+                this.setState({
+                  todos: todos
+                });
+
+              case 7:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function componentDidMount() {
+        return _componentDidMount.apply(this, arguments);
+      }
+
+      return componentDidMount;
+    }()
+  }, {
     key: "handleTodoItemChange",
     value: function handleTodoItemChange(id) {
       this.setState(function (prevState) {
         return {
           todos: prevState.todos.map(function (item) {
             return item.id === id ? _objectSpread(_objectSpread({}, item), {}, {
-              isCompleted: !item.isCompleted
+              completed: !item.completed
             }) : item;
           })
         };
@@ -117,8 +149,8 @@ var App = /*#__PURE__*/function (_Component) {
         return {
           todos: [].concat(_toConsumableArray(prevState.todos), [{
             id: ((_prevState$todos = prevState.todos[prevState.todos.length - 1]) === null || _prevState$todos === void 0 ? void 0 : _prevState$todos.id) + 1 || 1,
-            text: value,
-            isCompleted: false
+            title: value,
+            completed: false
           }])
         };
       });
@@ -137,9 +169,9 @@ var App = /*#__PURE__*/function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_todo_input_TodoInput_jsx__WEBPACK_IMPORTED_MODULE_4__.default, {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_todo_input_TodoInput_jsx__WEBPACK_IMPORTED_MODULE_5__.default, {
         onTodoInputSubmit: this.handleTodoInput
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_todo_list_TodoList_jsx__WEBPACK_IMPORTED_MODULE_3__.default, {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_todo_list_TodoList_jsx__WEBPACK_IMPORTED_MODULE_4__.default, {
         todos: this.state.todos,
         onTodoItemChange: this.handleTodoItemChange,
         onTodoItemRemove: this.handleRemove
@@ -336,16 +368,16 @@ var TodoItem = /*#__PURE__*/function (_Component) {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: classnames_bind__WEBPACK_IMPORTED_MODULE_3___default()(_TodoItem_scss__WEBPACK_IMPORTED_MODULE_2__.default["todo-item"], _defineProperty({}, _TodoItem_scss__WEBPACK_IMPORTED_MODULE_2__.default["todo-item--completed"], this.props.isCompleted))
+        className: classnames_bind__WEBPACK_IMPORTED_MODULE_3___default()(_TodoItem_scss__WEBPACK_IMPORTED_MODULE_2__.default["todo-item"], _defineProperty({}, _TodoItem_scss__WEBPACK_IMPORTED_MODULE_2__.default["todo-item--completed"], this.props.completed))
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
         className: _TodoItem_scss__WEBPACK_IMPORTED_MODULE_2__.default["todo-item__label"]
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "checkbox",
         onChange: this.handleClick,
-        checked: this.props.isCompleted
+        checked: this.props.completed
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
         className: _TodoItem_scss__WEBPACK_IMPORTED_MODULE_2__.default["todo-item__text"]
-      }, this.props.item)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+      }, this.props.title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         className: _TodoItem_scss__WEBPACK_IMPORTED_MODULE_2__.default["todo-item__remove"],
         onClick: this.handleRemove
       }, "X"));
@@ -356,8 +388,8 @@ var TodoItem = /*#__PURE__*/function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0__.Component);
 
 TodoItem.propTypes = {
-  item: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string.isRequired),
-  isCompleted: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool.isRequired),
+  title: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string.isRequired),
+  completed: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool.isRequired),
   onItemChange: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().func.isRequired),
   onItemRemove: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().func.isRequired)
 };
@@ -429,8 +461,8 @@ var TodoList = /*#__PURE__*/function (_Component) {
         className: _TodoList_scss__WEBPACK_IMPORTED_MODULE_3__.default["todo-list__empty"]
       }, "No todos"), this.props.todos.map(function (item) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_todo_item_TodoItem_jsx__WEBPACK_IMPORTED_MODULE_2__.default, {
-          item: item.text,
-          isCompleted: item.isCompleted,
+          title: item.title,
+          completed: item.completed,
           key: item.id,
           onItemChange: function onItemChange() {
             return _this.props.onTodoItemChange(item.id);
@@ -449,8 +481,8 @@ var TodoList = /*#__PURE__*/function (_Component) {
 TodoList.propTypes = {
   todos: prop_types__WEBPACK_IMPORTED_MODULE_1___default().arrayOf(prop_types__WEBPACK_IMPORTED_MODULE_1___default().shape({
     id: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().number.isRequired),
-    text: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string.isRequired),
-    isCompleted: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool.isRequired)
+    title: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string.isRequired),
+    completed: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool.isRequired)
   })).isRequired,
   onTodoItemChange: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().func.isRequired),
   onTodoItemRemove: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().func.isRequired)
@@ -489,7 +521,7 @@ __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
     if(true) {
-      // 1627476376060
+      // 1627481116115
       var cssReload = __webpack_require__(/*! ./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js */ "./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js")(module.id, {"locals":true});
       module.hot.dispose(cssReload);
       
@@ -511,7 +543,7 @@ __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({"todo-input":"TodoInput__todo-input--3LBK3","todo-input__input":"TodoInput__todo-input__input--1xHB-","todo-input__submit":"TodoInput__todo-input__submit--Ztnld"});
     if(true) {
-      // 1627476376027
+      // 1627481116100
       var cssReload = __webpack_require__(/*! ./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js */ "./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js")(module.id, {"locals":true});
       module.hot.dispose(cssReload);
       
@@ -533,7 +565,7 @@ __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({"todo-item":"TodoItem__todo-item--3XQt2","todo-item__label":"TodoItem__todo-item__label---ZkhS","todo-item__remove":"TodoItem__todo-item__remove--ut_V7","todo-item--completed":"TodoItem__todo-item--completed--2TlF4","todo-item__text":"TodoItem__todo-item__text--1ypE6"});
     if(true) {
-      // 1627476376052
+      // 1627481116109
       var cssReload = __webpack_require__(/*! ./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js */ "./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js")(module.id, {"locals":true});
       module.hot.dispose(cssReload);
       
@@ -555,7 +587,7 @@ __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({"todo-list":"TodoList__todo-list--36FPP","todo-list__empty":"TodoList__todo-list__empty--1lvlW"});
     if(true) {
-      // 1627476376036
+      // 1627481116092
       var cssReload = __webpack_require__(/*! ./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js */ "./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js")(module.id, {"locals":true});
       module.hot.dispose(cssReload);
       
@@ -700,7 +732,7 @@ module.exports = __webpack_require__.p + "images/icons/cancel.svg";
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("a2f31b4f305dd4bd6a77")
+/******/ 		__webpack_require__.h = () => ("0b98bc9697b0aad2d84a")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */

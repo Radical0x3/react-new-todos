@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import regeneratorRuntime from "regenerator-runtime";
 import "./App.scss";
 import "../../sprites/cancel.svg";
 import TodoList from "#components/todo-list/TodoList.jsx";
@@ -10,11 +11,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      todos: [
-        {id: 1, text: "Lorem ipsum #1", isCompleted: false},
-        {id: 2, text: "Lorem ipsum #2", isCompleted: false},
-        {id: 3, text: "Lorem ipsum #3", isCompleted: true}
-      ],
+      todos: []
     }
 
     this.handleTodoItemChange = this.handleTodoItemChange.bind(this);
@@ -22,9 +19,15 @@ class App extends Component {
     this.handleRemove = this.handleRemove.bind(this);
   }
 
+  async componentDidMount() {
+    let response = await fetch('https://jsonplaceholder.typicode.com/todos?_limit=10');
+    let todos = await response.json();
+    this.setState({todos: todos});
+  }
+
   handleTodoItemChange(id) {
     this.setState(prevState => ({
-      todos: prevState.todos.map(item => item.id === id ? {...item, isCompleted: !item.isCompleted} : item)
+      todos: prevState.todos.map(item => item.id === id ? {...item, completed: !item.completed} : item)
     }))
   }
 
@@ -32,7 +35,7 @@ class App extends Component {
     this.setState(prevState => ({
       todos: [
         ...prevState.todos,
-        {id: prevState.todos[prevState.todos.length - 1]?.id + 1 || 1, text: value, isCompleted: false}
+        {id: prevState.todos[prevState.todos.length - 1]?.id + 1 || 1, title: value, completed: false}
       ]
     }))
   }

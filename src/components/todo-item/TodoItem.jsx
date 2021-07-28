@@ -21,10 +21,10 @@ class TodoItem extends Component {
 
   render() {
     return (
-      <div className={classNames(styles["todo-item"], {[styles["todo-item--completed"]]: this.props.isCompleted})}>
+      <div className={classNames(styles["todo-item"], {[styles["todo-item--completed"]]: this.props.completed})}>
         <label className={styles["todo-item__label"]}>
-          <input type="checkbox" onChange={this.handleClick} checked={this.props.isCompleted}/>
-          <span className={styles["todo-item__text"]}>{this.props.item}</span>
+          <input type="checkbox" onChange={this.handleClick} checked={this.props.completed}/>
+          <span className={styles["todo-item__text"]}>{this.props.title}</span>
         </label>
         <button className={styles["todo-item__remove"]} onClick={this.handleRemove}>X</button>
       </div>
@@ -33,8 +33,8 @@ class TodoItem extends Component {
 }
 
 TodoItem.propTypes = {
-  item: PropTypes.string.isRequired,
-  isCompleted: PropTypes.bool.isRequired,
+  title: PropTypes.string.isRequired,
+  completed: PropTypes.bool.isRequired,
   onItemChange: PropTypes.func.isRequired,
   onItemRemove: PropTypes.func.isRequired
 };

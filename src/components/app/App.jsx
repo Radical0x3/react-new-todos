@@ -1,6 +1,5 @@
-import React, {Component} from 'react';
-import regeneratorRuntime from "regenerator-runtime";
-import "./App.scss";
+import React, {Component} from "react";
+import "regenerator-runtime";
 import "../../sprites/cancel.svg";
 import TodoList from "#components/todo-list/TodoList.jsx";
 import TodoInput from "#components/todo-input/TodoInput.jsx";
@@ -12,7 +11,7 @@ class App extends Component {
 
     this.state = {
       todos: []
-    }
+    };
 
     this.handleTodoItemChange = this.handleTodoItemChange.bind(this);
     this.handleTodoInput = this.handleTodoInput.bind(this);
@@ -20,7 +19,7 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    let response = await fetch('https://jsonplaceholder.typicode.com/todos?_limit=10');
+    let response = await fetch("https://jsonplaceholder.typicode.com/todos?_limit=10");
     let todos = await response.json();
     this.setState({todos: todos});
   }
@@ -28,7 +27,7 @@ class App extends Component {
   handleTodoItemChange(id) {
     this.setState(prevState => ({
       todos: prevState.todos.map(item => item.id === id ? {...item, completed: !item.completed} : item)
-    }))
+    }));
   }
 
   handleTodoInput(value) {
@@ -37,22 +36,23 @@ class App extends Component {
         ...prevState.todos,
         {id: prevState.todos[prevState.todos.length - 1]?.id + 1 || 1, title: value, completed: false}
       ]
-    }))
+    }));
   }
 
   handleRemove(id) {
     this.setState(prevState => ({
       todos: prevState.todos.filter(item => item.id !== id)
-    }))
+    }));
   }
 
   render() {
     return (
       <>
-        <TodoInput onTodoInputSubmit={this.handleTodoInput}/>
-        <TodoList todos={this.state.todos}
-                  onTodoItemChange={this.handleTodoItemChange}
-                  onTodoItemRemove={this.handleRemove}
+        <TodoInput onTodoInputSubmit={this.handleTodoInput} />
+        <TodoList
+          todos={this.state.todos}
+          onTodoItemChange={this.handleTodoItemChange}
+          onTodoItemRemove={this.handleRemove}
         />
       </>
     );

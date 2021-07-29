@@ -112,14 +112,14 @@ module.exports = {
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
-        type: 'asset/resource',
+        type: "asset/resource",
         generator: {
           filename: "fonts/[name][ext]"
         }
       },
       {
         test: /\.svg/,
-        type: 'asset/resource',
+        type: "asset/resource",
         generator: {
           filename: "images/icons/[name][ext]"
         }

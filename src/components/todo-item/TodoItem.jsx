@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+import React, {Component} from "react";
+import PropTypes from "prop-types";
 import styles from "./TodoItem.scss";
 import classNames from "classnames/bind";
 
@@ -23,7 +23,7 @@ class TodoItem extends Component {
     return (
       <div className={classNames(styles["todo-item"], {[styles["todo-item--completed"]]: this.props.completed})}>
         <label className={styles["todo-item__label"]}>
-          <input type="checkbox" onChange={this.handleClick} checked={this.props.completed}/>
+          <input type="checkbox" onChange={this.handleClick} checked={this.props.completed} />
           <span className={styles["todo-item__text"]}>{this.props.title}</span>
         </label>
         <button className={styles["todo-item__remove"]} onClick={this.handleRemove}>X</button>
